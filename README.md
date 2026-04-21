@@ -1,7 +1,7 @@
 # 🎮 Tic-Tac-Toe
 
 ![Build Status](https://img.shields.io/badge/build-passing-brightgreen)
-![Language](https://img.shields.io/badge/language-C%2B%2B-blue)
+![Language](https://img.shields.io/badge/language-Java-blue)
 ![License](https://img.shields.io/badge/license-MIT-green)
 
 A classic, fully functional Tic-Tac-Toe game built with **C++**. This project demonstrates fundamental programming concepts, including matrix manipulation, game loop architecture, and algorithmic win-checking using Object-Oriented Programming principles.
