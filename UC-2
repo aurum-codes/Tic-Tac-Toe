@@ -1,0 +1,63 @@
+import java.util.Random;
+
+/**
+ * TicTacToe
+ * UC2 performs a random toss to decide who plays first and assigns
+ * symbols (X or O) to the human and computer accordingly.
+ */
+public class TicTacToe {
+
+    static boolean isHumanTurn;
+    static char humanSymbol;
+    static char computerSymbol;
+
+    /**
+     * Entry point of the program. Executes the toss logic and displays
+     * the result of turn and symbol assignment.
+     */
+    public static void main(String[] args) {
+        tossAndAssignSymbols();
+        displayTossResult();
+    }
+
+    /**
+     * Uses random logic to decide the first player and assigns symbols
+     * based on the toss outcome. This method initializes the game state.
+     */
+    static void tossAndAssignSymbols() {
+        Random random = new Random();
+        // Generate a random number between 0 and 1
+        int tossResult = random.nextInt(2);
+
+        // If tossResult is 0, Human plays first. If 1, Computer plays first.
+        if (tossResult == 0) {
+            isHumanTurn = true;
+            humanSymbol = 'X';
+            computerSymbol = 'O';
+        } else {
+            isHumanTurn = false;
+            computerSymbol = 'X'; // In standard Tic-Tac-Toe, first player is usually X
+            humanSymbol = 'O';
+        }
+    }
+
+    /**
+     * Displays the toss result, indicating who plays first and which
+     * symbol is assigned to each player.
+     */
+    static void displayTossResult() {
+        System.out.println("======= TOSS RESULT =======");
+        
+        if (isHumanTurn) {
+            System.out.println("Result: Human won the toss!");
+            System.out.println("First turn: Human");
+        } else {
+            System.out.println("Result: Computer won the toss!");
+            System.out.println("First turn: Computer");
+        }
+        
+        System.out.println("Human Symbol: " + humanSymbol);
+        System.out.println("Computer Symbol: " + computerSymbol);
+        System.out.println("===========================");
+    }
+}
