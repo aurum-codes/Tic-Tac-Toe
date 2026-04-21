@@ -1,0 +1,45 @@
+/**
+ * TicTacToe
+ * UC5 validates whether a move is inside the board boundaries
+ * and whether the selected cell is empty.
+ */
+public class TicTacToe {
+
+    static char[][] board = {
+        {'-', '-', '-'},
+        {'-', '-', '-'},
+        {'-', '-', '-'}
+    };
+
+    /**
+     * Entry point of the program. Tests the validation logic
+     * using sample row and column values.
+     */
+    public static void main(String[] args) {
+        // Testing a valid move in the center of the board
+        System.out.println(isValidMove(1, 1)); 
+    }
+
+    /**
+     * Checks if the given row and column are within bounds
+     * and if the target cell is empty.
+     * Input: Row, Column
+     * Output: true if valid, false otherwise.
+     */
+    static boolean isValidMove(int row, int col) {
+        // Step 1: Boundary Checking
+        // Ensure the row and column are between 0 and 2
+        boolean isWithinBounds = (row >= 0 && row < 3 && col >= 0 && col < 3);
+
+        if (isWithinBounds) {
+            // Step 2: Empty Cell Checking
+            // Only check the cell if we know the indices are safe
+            if (board[row][col] == '-') {
+                return true; // The move is valid
+            }
+        }
+
+        // If it's out of bounds or the cell is not '-', the move is invalid
+        return false; 
+    }
+}
