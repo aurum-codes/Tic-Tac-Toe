@@ -1,0 +1,53 @@
+/**
+ * TicTacToe
+ * UC8 controls the continuous game loop and alternates
+ * turns until the game ends.
+ */
+public class TicTacToe {
+
+    static boolean isHumanTurn = true;
+    static boolean gameOver = false;
+
+    /**
+     * Entry point of the program. Demonstrates the structure
+     * of a continuous game loop.
+     */
+    public static void main(String[] args) {
+        int simulatedTurns = 0; // Added to prevent an infinite loop during testing
+
+        System.out.println("--- Game Started ---");
+
+        // The continuous game loop: runs as long as the game is not over
+        while (!gameOver) {
+            
+            // Step 1: Execute the move based on whose turn it is
+            if (isHumanTurn) {
+                System.out.println("Executing Human's turn...");
+                // Call human move logic here (e.g., getUserSlot(), placeMove())
+            } else {
+                System.out.println("Executing Computer's turn...");
+                // Call computer move logic here (e.g., computerMove())
+            }
+
+            // Step 2: Check for Win or Draw
+            // Placeholder: In a full implementation, a method would check the board 
+            // state and set gameOver = true if a win or draw is detected.
+            
+            // --- Simulation Logic (For testing purposes) ---
+            simulatedTurns++;
+            if (simulatedTurns >= 4) {
+                System.out.println("Check Win/Draw: Game ending condition met!");
+                gameOver = true; 
+            }
+            // -----------------------------------------------
+
+            // Step 3: Switch turns
+            // If the game didn't end this round, flip the boolean to alternate turns
+            if (!gameOver) {
+                isHumanTurn = !isHumanTurn;
+            }
+        }
+        
+        System.out.println("--- Game Loop Terminated ---");
+    }
+}
