@@ -1,0 +1,56 @@
+/**
+ * TicTacToe
+ * UC9 checks whether a player has won by examining
+ * rows, columns, and diagonals.
+ */
+public class TicTacToe {
+
+    static char[][] board = new char[3][3];
+
+    /**
+     * Entry point of the program. Tests the win-check logic.
+     */
+    public static void main(String[] args) {
+        // Setting up a sample winning diagonal for testing purposes
+        board[0][0] = 'X';
+        board[1][1] = 'X';
+        board[2][2] = 'X';
+
+        // Should print 'true' since 'X' has a diagonal win
+        System.out.println("Did X win? " + hasWon('X'));
+    }
+
+    /**
+     * Checks all possible winning patterns for the given symbol.
+     * Input: Player symbol
+     * Output: true if win detected.
+     */
+    static boolean hasWon(char symbol) {
+        // 1. Check all 3 Rows
+        for (int i = 0; i < 3; i++) {
+            if (board[i][0] == symbol && board[i][1] == symbol && board[i][2] == symbol) {
+                return true;
+            }
+        }
+
+        // 2. Check all 3 Columns
+        for (int j = 0; j < 3; j++) {
+            if (board[0][j] == symbol && board[1][j] == symbol && board[2][j] == symbol) {
+                return true;
+            }
+        }
+
+        // 3. Check the Main Diagonal (Top-Left to Bottom-Right)
+        if (board[0][0] == symbol && board[1][1] == symbol && board[2][2] == symbol) {
+            return true;
+        }
+
+        // 4. Check the Anti-Diagonal (Top-Right to Bottom-Left)
+        if (board[0][2] == symbol && board[1][1] == symbol && board[2][0] == symbol) {
+            return true;
+        }
+
+        // If all checks finish without returning true, no win is detected
+        return false;
+    }
+}
