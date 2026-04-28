@@ -1,0 +1,90 @@
+import java.util.Random;
+
+/**
+ * TicTacToe
+ * UC7 allows the computer to make a random valid move
+ * by reusing slot conversion and validation logic.
+ */
+public class TicTacToe {
+
+    static char[][] board = {
+        {'-', '-', '-'},
+        {'-', '-', '-'},
+        {'-', '-', '-'}
+    };
+    
+    static char computerSymbol = 'O';
+
+    /**
+     * Entry point of the program. Triggers the computer move.
+     */
+    public static void main(String[] args) {
+        System.out.println("Computer is thinking...");
+        computerMove();
+        
+        // Print the board to verify the move was placed
+        printBoard();
+    }
+
+    /**
+     * Generates random slot values until a valid move is found,
+     * then places the computer symbol on the board.
+     */
+    static void computerMove() {
+        Random random = new Random();
+        int slot;
+        int row;
+        int col;
+
+        // Loop indefinitely until a valid move is successfully placed
+        while (true) {
+            // Generate a random slot between 1 and 9
+            // nextInt(9) generates 0-8, so we add 1
+            slot = random.nextInt(9) + 1; 
+            
+            // Step 1: Reuse conversion logic (UC4)
+            row = getRowFromSlot(slot);
+            col = getColFromSlot(slot);
+
+            // Step 2: Reuse validation logic (UC5)
+            if (isValidMove(row, col)) {
+                // Step 3: Reuse placement logic (UC6)
+                placeMove(row, col, computerSymbol);
+                System.out.println("Computer placed '" + computerSymbol + "' in slot " + slot);
+                
+                // Break out of the loop since a valid move was made
+                break; 
+            }
+        }
+    }
+
+    // ==========================================
+    // REUSED HELPER METHODS FROM PREVIOUS UCs
+    // ==========================================
+
+    static int getRowFromSlot(int slot) {
+        return (slot - 1) / 3;
+    }
+
+    static int getColFromSlot(int slot) {
+        return (slot - 1) % 3;
+    }
+
+    static boolean isValidMove(int row, int col) {
+        return (row >= 0 && row < 3 && col >= 0 && col < 3 && board[row][col] == '-');
+    }
+
+    static void placeMove(int row, int col, char symbol) {
+        board[row][col] = symbol;
+    }
+
+    // Simple print method to visualize the result
+    static void printBoard() {
+        for (int i = 0; i < 3; i++) {
+            for (int j = 0; j < 3; j++) {
+                System.out.print(board[i][j] + " ");
+            }
+            System.out.println();
+        }
+    }
+}
