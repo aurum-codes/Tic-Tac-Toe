@@ -1,0 +1,39 @@
+/**
+ * TicTacToe
+ * UC10 checks whether the game has ended in a draw
+ * by ensuring no empty cells remain on the board.
+ */
+public class TicTacToe {
+
+    static char[][] board = new char[3][3];
+
+    /**
+     * Entry point of the program. Tests draw detection logic.
+     */
+    public static void main(String[] args) {
+        // In a real scenario, this would be called after a player's move
+        // and after ensuring no one has won yet (UC9).
+        System.out.println("Is it a draw? " + isDraw());
+    }
+
+    /**
+     * Traverses the board to check for any remaining empty cells.
+     * Output: true if draw, false otherwise.
+     */
+    static boolean isDraw() {
+        // Outer loop goes through the rows
+        for (int r = 0; r < 3; r++) {
+            // Inner loop goes through the columns
+            for (int c = 0; c < 3; c++) {
+                // If any cell contains the initialization character '-', 
+                // the board is not full.
+                if (board[r][c] == '-') {
+                    return false; // Not a draw yet
+                }
+            }
+        }
+        
+        // If the loops finish without returning false, no empty cells exist.
+        return true; 
+    }
+}
